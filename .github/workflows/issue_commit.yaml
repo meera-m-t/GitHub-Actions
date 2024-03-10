@@ -38,6 +38,8 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: '+1'
+permissions:
+  issues: write
        
 
         
