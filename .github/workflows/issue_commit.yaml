@@ -8,12 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: "dump github context"
-        run: echo '${{ toJSON(github.event) }}' 
+        run: echo '${{ toJSON(github.event) }}'
         shell: bash 
       - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{github.event.issue.number}} 
+          issue-number: '${{github.event.issue.number}}' 
           body: |
             This is a multi-line test comment
             - With GitHub **Markdown** :sparkles:
@@ -21,7 +21,3 @@ jobs:
 
             [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: '+1'
-
-
-
-
