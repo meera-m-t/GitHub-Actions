@@ -28,12 +28,12 @@ jobs:
   comment-with-api:
     runs-on: ubuntu-latest
     steps:
-    - name: Create comment with API
-      run: |
-        gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-          -f body="Comment from the API call not action"
-    env:
-      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      - name: Create comment with API
+        run: |
+          gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+            -f body="Comment from the API call not action"
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
    
     
