@@ -14,29 +14,18 @@ jobs:
         run: |
           echo "GitHub event payload:"
           echo '${{ toJSON(github.event) }}'
-        shell: bash 
+        shell: bash   
 
-      - name: Create or update comment on Issues
-        if: github.event_name == 'issues'
+      - name: Create comment
         uses: peter-evans/create-or-update-comment@v4
         with:
-          issue-number: ${{ github.event.issue.number }}
+          issue-number: '${{github.event.issue.number}}'
           body: |
             This is a multi-line test comment
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
-          reactions: '+1'
-   
 
-      - name: Create or update comment on PRs
-        if: github.event_name == 'pull_request_target'
-        uses: peter-evans/create-or-update-comment@v4
-        with:
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            This is a multi-line test comment
-            - With GitHub **Markdown** :sparkles:
-            - Created by [create-or-update-comment][1]
+            [1]: https://github.com/peter-evans/create-or-update-comment
           reactions: '+1'
 permissions:
   issues: write
