@@ -1,1 +1,4 @@
-name: Create a commit on new issue
+name: Create a commit on new issues
+on:
+
+
