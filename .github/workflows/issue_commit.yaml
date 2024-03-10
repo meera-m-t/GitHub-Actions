@@ -1,4 +1,17 @@
 name: Create a commit on new issues
 on:
+  issues:
+    types: [opened]
+
+jops:
+  commit-with-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "dump github context"
+        run: echo '${{ toJSON(github.event) }}' |jq
+        shell: bash 
+          
+
+
 
 
