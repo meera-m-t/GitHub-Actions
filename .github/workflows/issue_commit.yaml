@@ -1,4 +1,4 @@
-name: Create a comment on new issues
+name: Comment on New Issues and PRs
 
 on:
   issues:
@@ -7,7 +7,7 @@ on:
     types: [opened]
 
 jobs:
-  comment-on-issue:
+  comment-on-issue-and-pr:
     runs-on: ubuntu-latest
     steps:
       - name: Dump GitHub context
@@ -16,8 +16,8 @@ jobs:
           echo '${{ toJSON(github.event) }}'
         shell: bash 
 
-      - name: Create or update comment
-        if: github.event.issue.pull_request != null
+      - name: Create or update comment on Issues
+        if: github.event_name == 'issues'
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.issue.number }}
@@ -26,4 +26,18 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: '+1'
+          repo-token: ${{ secrets.GH_TOKEN }}
+
+      - name: Create or update comment on PRs
+        if: github.event_name == 'pull_request_target'
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            This is a multi-line test comment
+            - With GitHub **Markdown** :sparkles:
+            - Created by [create-or-update-comment][1]
+          reactions: '+1'
+          repo-token: ${{ secrets.GH_TOKEN }}
+
         
