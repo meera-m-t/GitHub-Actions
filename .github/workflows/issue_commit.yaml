@@ -38,6 +38,6 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: '+1'
-          repo-token: ${{ secrets.GH_TOKEN }}
+       
 
         
