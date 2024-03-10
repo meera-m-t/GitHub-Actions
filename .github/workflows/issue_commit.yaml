@@ -32,8 +32,7 @@ jobs:
         run: |
           gh api -X POST /repos/meera-m-t/sameerah/issues/${{github.event.issue.number}}/comments \
             -f body="Your comment text goes here"
-        env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+ 
 
    
     
