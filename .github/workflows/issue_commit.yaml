@@ -26,7 +26,7 @@ jobs:
             - With GitHub **Markdown** :sparkles:
             - Created by [create-or-update-comment][1]
           reactions: '+1'
-          repo-token: ${{ secrets.GH_TOKEN }}
+   
 
       - name: Create or update comment on PRs
         if: github.event_name == 'pull_request_target'
