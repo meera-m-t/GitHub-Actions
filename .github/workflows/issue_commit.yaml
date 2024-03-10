@@ -32,8 +32,9 @@ jobs:
       run: |
         gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
           -f body="Comment from the API call not action"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+    env:
+      GH_TOKEN: ${{ secrets.GH_TOKEN }}
+
    
     
 permissions:
