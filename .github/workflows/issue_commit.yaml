@@ -28,13 +28,12 @@ jobs:
   comment-with-api:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out code
-        uses: actions/checkout@v2
-  
-      - name: Create comment with API
-        run: |
-          gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -f body="Your comment text goes here"
+    - name: Create comment with API
+      run: |
+        gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
+          -f body="Comment from the API call not action"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
    
     
 permissions:
