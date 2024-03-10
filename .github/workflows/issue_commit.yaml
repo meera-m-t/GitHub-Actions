@@ -30,8 +30,8 @@ jobs:
     steps:
       - name: Create comment with API
         run: |
-          gh api -X POST /repos/${{ github.repository }}/issues/${{ github.event.issue.number }}/comments \
-            -f body="Comment from the API call not action"
+          gh api -X POST /repos/meera-m-t/sameerah/issues/${{github.event.issue.number}}/comments \
+            -f body="Your comment text goes here"
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
